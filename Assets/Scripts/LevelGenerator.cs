@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        TryCreateTemplate(PlatformOrder.StartPlatform);
+        TryCreateTemplate(PlatformType.StartPlatform);
     }
 
     private void Update()
@@ -24,7 +24,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (playerPositionX - _tileLength > _spawnPointX - (_numberOfActivePlatforms * _tileLength))
         {
-            TryCreateTemplate(PlatformOrder.NextPlatform);
+            TryCreateTemplate(PlatformType.ChallengePlatform);
         }
 
         if (playerPositionX - _tileLength * _numberOfActivePlatforms >= _activeLevelPlatforms.Peek().transform.position.x)
@@ -33,9 +33,9 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    private void TryCreateTemplate(PlatformOrder order)
+    private void TryCreateTemplate(PlatformType type)
     {
-        var template = GetRandomTemplate(order);
+        var template = GetRandomTemplate(type);
 
         if (template == null)
             return;
@@ -46,9 +46,9 @@ public class LevelGenerator : MonoBehaviour
         _spawnPointX += _tileLength;
     }
 
-    private LevelPlatform GetRandomTemplate(PlatformOrder order)
+    private LevelPlatform GetRandomTemplate(PlatformType type)
     {
-        var variants = _templates.Where(levelPlatform => levelPlatform.Order == order);
+        var variants = _templates.Where(levelPlatform => levelPlatform.Type == type);
 
         if (variants.Count() == 1)
             return variants.First();

@@ -2,7 +2,7 @@
 
 class LevelPlatform : MonoBehaviour
 {
-    [SerializeField] private PlatformOrder _order;
+    [SerializeField] private PlatformType _type;
 
-    public PlatformOrder Order => _order;
+    public PlatformType Type => _type;
 }

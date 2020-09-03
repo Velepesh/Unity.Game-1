@@ -10,15 +10,15 @@ public class WalletDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        _wallet.CoinChanged += OnMoneyChanged;
+        _wallet.CoinChanged += OnCoinChanged;
     }
 
     private void OnDisable()
     {
-        _wallet.CoinChanged -= OnMoneyChanged;
+        _wallet.CoinChanged -= OnCoinChanged;
     }
 
-    private void OnMoneyChanged(int money)
+    private void OnCoinChanged(int money)
     {
         _walletText.text = money.ToString();
     }

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-
 public class Player : MonoBehaviour
 {
     readonly private Vector3 _slopeLimit = new Vector3(1f, 0f, 0f);
