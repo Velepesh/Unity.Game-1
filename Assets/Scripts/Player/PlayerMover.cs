@@ -8,7 +8,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
 
     private Rigidbody _rigidbody;
-    private float _checkDistance = 1f;
+    private readonly float _groundCheck = 1f;
 
     private void Start()
     {
@@ -31,6 +31,6 @@ public class PlayerMover : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, _checkDistance, _layerMask);
+        return Physics.Raycast(transform.position, -Vector3.up, _groundCheck, _layerMask);
     }
 }

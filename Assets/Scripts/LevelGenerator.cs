@@ -7,9 +7,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private LevelPlatform[] _templates;
     [SerializeField] private Player _player;
 
-    readonly private int _tileLength = 50;
-    readonly private int _numberOfActivePlatforms = 2;
-    private float _spawnPointX = -25f;
+    private readonly int _tileLength = 50;
+    private readonly int _activePlatforms = 2;
+    private float _spawnPointX;
 
     private Queue<LevelPlatform> _activeLevelPlatforms = new Queue<LevelPlatform>();
 
@@ -22,12 +22,12 @@ public class LevelGenerator : MonoBehaviour
     {
         float playerPositionX = _player.transform.position.x;
 
-        if (playerPositionX - _tileLength > _spawnPointX - (_numberOfActivePlatforms * _tileLength))
+        if (playerPositionX - _tileLength > _spawnPointX - (_activePlatforms * _tileLength))
         {
             TryCreateTemplate(PlatformType.ChallengePlatform);
         }
 
-        if (playerPositionX - _tileLength * _numberOfActivePlatforms >= _activeLevelPlatforms.Peek().transform.position.x)
+        if (playerPositionX - _tileLength * _activePlatforms >= _activeLevelPlatforms.Peek().transform.position.x)
         {
             DeletePlatform();
         }

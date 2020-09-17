@@ -6,6 +6,8 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private Player _player;
 
+    private readonly string _menuScene = "MenuScene";
+
     private void OnEnable()
     {
         _player.PlayerDied += OnPlayerDied;
@@ -30,8 +32,7 @@ public class GameOverMenu : MonoBehaviour
 
     public void Menu()
     {
-        int menuSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
-        SceneManager.LoadScene(menuSceneIndex);
+        SceneManager.LoadScene(_menuScene);
         Time.timeScale = 1;
     }
 

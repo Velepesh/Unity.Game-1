@@ -5,6 +5,8 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenu;
 
+    private readonly string _menuScene = "MenuScene";
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -27,8 +29,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Menu()
     {
-        int menuSceneIndex = SceneManager.GetActiveScene().buildIndex - 1;
-        SceneManager.LoadScene(menuSceneIndex);
+        SceneManager.LoadScene(_menuScene);
         Time.timeScale = 1;
     }
 

@@ -6,6 +6,8 @@ public class MainMenu : MonoBehaviour
 {
     private Animator _animator;
 
+    private readonly string _gameScene = "GameScene";
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -13,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(_gameScene);
         Time.timeScale = 1;
     }
 

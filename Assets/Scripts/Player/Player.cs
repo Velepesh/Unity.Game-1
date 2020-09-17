@@ -3,15 +3,17 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    readonly private Vector3 _slopeLimit = new Vector3(1f, 0f, 0f);
+    private readonly float _angleLimit = 135f;
 
-    public UnityAction PlayerDied;
+    public event UnityAction PlayerDied;
 
     private void OnCollisionStay(Collision collision)
     {
         Vector3 collisionDirection = collision.GetContact(0).normal;
 
-        if(Mathf.Abs(collisionDirection.x) == _slopeLimit.x || collisionDirection.y < _slopeLimit.y)
+        float collisionAngle = (Vector3.Angle(Vector3.right, collisionDirection));
+
+        if (collisionAngle > _angleLimit)
         {
             PlayerDied?.Invoke();
         }

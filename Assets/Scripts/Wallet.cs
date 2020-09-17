@@ -3,14 +3,14 @@ using UnityEngine.Events;
 
 public class Wallet : MonoBehaviour
 {
-    private int _coin;
+    private int _coins;
 
     public event UnityAction<int> CoinChanged;
 
     public void AddCoin()
     {
-        _coin++;
+        _coins++;
 
-        CoinChanged?.Invoke(_coin);
+        CoinChanged?.Invoke(_coins);
     }
 }
