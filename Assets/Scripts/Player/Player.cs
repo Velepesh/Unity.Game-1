@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     {
         Vector3 collisionDirection = collision.GetContact(0).normal;
 
-        float collisionAngle = (Vector3.Angle(Vector3.right, collisionDirection));
+        float collisionAngle = Vector3.Angle(Vector3.right, collisionDirection);
 
         if (collisionAngle > _angleLimit)
         {
